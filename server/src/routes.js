@@ -12,4 +12,6 @@ module.exports = (app) => {
         AuthenticationController.login);
 
     app.get('/vests', IndexController.index)
+
+    app.get('/vests/:id', IndexController.productById)
 };

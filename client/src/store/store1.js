@@ -12,7 +12,17 @@ export default new Vuex.Store({
   state: {
     token: null,
     user: null,
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    pets: [
+      { petId: 1, name: 'Jack' },
+      { petId: 2, name: 'Bred' }
+    ],
+    homePets: [],
+    vests: []
+  },
+  getters: {
+    pets: state => state.pets,
+    vests: state => state.vests
   },
   mutations: {
     setToken (state, token) {
@@ -21,6 +31,12 @@ export default new Vuex.Store({
     },
     setUser (state, user) {
       state.user = user
+    },
+    ADD_PET(state, petId) {
+      state.homePets.push(petId);
+    },
+    SET_VEST_COUNT(state, vestID) {
+      console.log(state.vests)
     }
   },
   actions: {
@@ -29,6 +45,12 @@ export default new Vuex.Store({
     },
     setUser ({commit}, user) {
       commit('setUser', user)
+    },
+    addPet(context, petId) {
+      context.commit('ADD_PET', petId);
+    },
+    setVestCount(context, vestID) {
+      context.commit('SET_VEST_COUNT', vestID);
     }
   }
 })
